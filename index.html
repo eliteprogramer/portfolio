@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Mughal - Odoo Developer & Cybersecurity Specialist</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brandBg: '#090d16',
+                        brandSurface: '#121824',
+                        brandBorder: '#1e293b',
+                        brandAccent: '#00a3ff',
+                        brandAccentHover: '#0088dd',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <style>
+        body {
+            background-color: #090d16;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Glowing Accent Button */
+        .btn-glow {
+            background: linear-gradient(135deg, #0099ff 0%, #0066cc 100%);
+            box-shadow: 0 0 20px rgba(0, 153, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(0, 153, 255, 0.7);
+            transform: translateY(-1px);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0099ff;
+        }
+    </style>
+</head>
+<body class="bg-brandBg text-slate-200 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-brandBg/80 backdrop-blur-md border-b border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo Section -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-lg group-hover:border-cyan-400 transition-colors">
+                    MM
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-white text-base tracking-wide leading-tight">Muhammad Mughal</span>
+                    <span class="text-xs text-slate-400 font-medium">Odoo Developer</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-slate-300">
+                <div class="relative group cursor-pointer py-2">
+                    <span class="hover:text-white flex items-center gap-1">Services 
+                        <svg class="w-4 h-4 opacity-70 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </span>
+                    <!-- Dropdown -->
+                    <div class="absolute top-full left-0 hidden group-hover:block w-48 bg-brandSurface border border-slate-800 rounded-xl shadow-2xl py-2 mt-1">
+                        <a href="#services" class="block px-4 py-2 hover:bg-slate-800/60 hover:text-cyan-400 text-xs">Custom Addons</a>
+                        <a href="#services" class="block px-4 py-2 hover:bg-slate-800/60 hover:text-cyan-400 text-xs">Odoo Integration</a>
+                        <a href="#services" class="block px-4 py-2 hover:bg-slate-800/60 hover:text-cyan-400 text-xs">eCommerce Sync</a>
+                    </div>
+                </div>
+
+                <div class="relative group cursor-pointer py-2">
+                    <span class="hover:text-white flex items-center gap-1">Integrations
+                        <svg class="w-4 h-4 opacity-70 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </span>
+                </div>
+
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#odoo-apps" class="hover:text-white transition-colors">Odoo Apps</a>
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#careers" class="hover:text-white transition-colors">Careers</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden sm:block">
+                <a href="#contact" class="btn-glow inline-flex items-center justify-center px-6 py-2.5 rounded-full text-white font-medium text-sm transition-all">
+                    Discuss Your Project
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-btn" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brandSurface border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#services" class="block py-2 text-slate-300 hover:text-cyan-400">Services</a>
+            <a href="#integrations" class="block py-2 text-slate-300 hover:text-cyan-400">Integrations</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-cyan-400">Projects</a>
+            <a href="#odoo-apps" class="block py-2 text-slate-300 hover:text-cyan-400">Odoo Apps</a>
+            <a href="#about" class="block py-2 text-slate-300 hover:text-cyan-400">About</a>
+            <a href="#careers" class="block py-2 text-slate-300 hover:text-cyan-400">Careers</a>
+            <a href="#contact" class="btn-glow block text-center py-2.5 rounded-full text-white font-medium text-sm mt-4">
+                Discuss Your Project
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 space-y-16">
+
+        <!-- Breadcrumb & Hero Header -->
+        <section class="space-y-4">
+            <div class="flex items-center gap-2 text-sm text-slate-400">
+                <a href="#" class="hover:text-cyan-400 transition-colors">Home</a>
+                <span>/</span>
+                <span class="text-slate-200">About Us</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-4xl">
+                Odoo Development, Modules & Integrations
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-400 max-w-3xl leading-relaxed font-light">
+                Meet the team behind custom Odoo development, modules, migrations, cybersecurity, and eCommerce integrations.
+            </p>
+        </section>
+
+        <!-- Profiles Section -->
+        <section id="about" class="space-y-12">
+            
+            <!-- Founder Profile Card -->
+            <div class="bg-brandSurface/90 border border-slate-800/80 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-sm transition-all hover:border-slate-700">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                    
+                    <!-- Profile Image Container -->
+                    <div class="lg:col-span-4 flex justify-center">
+                        <div class="relative w-full max-w-sm rounded-2xl overflow-hidden border border-slate-700/60 shadow-xl bg-slate-900 group">
+                            <img src="profile.png" 
+                                 alt="Muhammad Mughal - Founder & CEO" 
+                                 class="w-full h-80 sm:h-96 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                                 onerror="this.src='https://placehold.co/400x480/121824/ffffff?text=Muhammad+Mughal'">
+                        </div>
+                    </div>
+
+                    <!-- Profile Info Details -->
+                    <div class="lg:col-span-8 space-y-6">
+                        
+                        <!-- Badge -->
+                        <div>
+                            <span class="inline-block px-3.5 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+                                Founder & CEO
+                            </span>
+                        </div>
+
+                        <!-- Title & Subtitle -->
+                        <div class="space-y-2">
+                            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-wide">
+                                Muhammad Mughal
+                            </h2>
+                            <p class="text-sm sm:text-base font-semibold text-slate-300">
+                                Founder & CEO · Odoo Developer · Cybersecurity Specialist
+                            </p>
+                        </div>
+
+                        <!-- Bio Paragraphs -->
+                        <div class="space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                            <p>
+                                Founder leading Odoo engineering, integrations and security advisory. Three years building custom addons, web scraping pipelines, Odoo websites and Node.js applications for international clients.
+                            </p>
+                            <p>
+                                The core focus is Odoo development: custom modules, workflow changes, migrations and integrations between Odoo, eCommerce platforms and external APIs. Related web and data work supports those systems where needed.
+                            </p>
+                        </div>
+
+                        <!-- Services Bullet List -->
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-sm sm:text-base text-slate-200 pt-2">
+                            <li class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 inline-block"></span>
+                                Custom Odoo addons & modules
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 inline-block"></span>
+                                Web scraping & data pipelines
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 inline-block"></span>
+                                Odoo Website & eCommerce
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 inline-block"></span>
+                                Node.js applications
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 inline-block"></span>
+                                Cybersecurity specialist & advisor
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 inline-block"></span>
+                                eCommerce &#8596; ERP integrations
+                            </li>
+                        </ul>
+
+                        <!-- External Profile Links -->
+                        <div class="pt-4 flex flex-wrap items-center gap-3 text-sm font-medium text-cyan-400">
+                            <a href="https://github.com" target="_blank" class="hover:underline hover:text-cyan-300">GitHub — misri12</a>
+                            <span class="text-slate-600">·</span>
+                            <a href="https://linkedin.com" target="_blank" class="hover:underline hover:text-cyan-300">LinkedIn</a>
+                            <span class="text-slate-600">·</span>
+                            <a href="#contact" class="hover:underline hover:text-cyan-300">Discuss a project</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- How We Work Methodology Section -->
+        <section class="space-y-8 pt-6 border-t border-slate-800/60">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white">How we work</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-300">
+                <div class="space-y-1.5 bg-brandSurface/40 p-5 rounded-xl border border-slate-800/50">
+                    <h3 class="font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Odoo-focused development
+                    </h3>
+                    <p class="text-slate-400 pl-4">Work centers on Odoo architecture, ORM patterns, security rules and upgrade-friendly customizations.</p>
+                </div>
+
+                <div class="space-y-1.5 bg-brandSurface/40 p-5 rounded-xl border border-slate-800/50">
+                    <h3 class="font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Custom business workflows
+                    </h3>
+                    <p class="text-slate-400 pl-4">Modules and automations are designed around your process — not forced into a generic template.</p>
+                </div>
+
+                <div class="space-y-1.5 bg-brandSurface/40 p-5 rounded-xl border border-slate-800/50">
+                    <h3 class="font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span> eCommerce integration experience
+                    </h3>
+                    <p class="text-slate-400 pl-4">Shopify, WooCommerce, Amazon and related storefronts connected to Odoo with practical sync design.</p>
+                </div>
+
+                <div class="space-y-1.5 bg-brandSurface/40 p-5 rounded-xl border border-slate-800/50">
+                    <h3 class="font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span> API-first approach
+                    </h3>
+                    <p class="text-slate-400 pl-4">Integrations use clear contracts, logging and error handling so operations teams can trust the pipeline.</p>
+                </div>
+
+                <div class="space-y-1.5 bg-brandSurface/40 p-5 rounded-xl border border-slate-800/50">
+                    <h3 class="font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Maintainable code
+                    </h3>
+                    <p class="text-slate-400 pl-4">Readable structure, sensible module boundaries and documentation that another developer can follow.</p>
+                </div>
+
+                <div class="space-y-1.5 bg-brandSurface/40 p-5 rounded-xl border border-slate-800/50">
+                    <h3 class="font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Practical problem solving
+                    </h3>
+                    <p class="text-slate-400 pl-4">Focus on fixing broken flows, fragile syncs and mismatched ERP processes with measurable outcomes.</p>
+                </div>
+
+                <div class="space-y-1.5 bg-brandSurface/40 p-5 rounded-xl border border-slate-800/50 md:col-span-2">
+                    <h3 class="font-bold text-white text-base flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Long-term support
+                    </h3>
+                    <p class="text-slate-400 pl-4">Handover that includes how the system works, what to monitor and how to extend it safely.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join Team Callout -->
+        <section id="careers" class="bg-gradient-to-r from-brandSurface to-slate-900 border border-slate-800 rounded-2xl p-8 text-center space-y-4 shadow-xl">
+            <h2 class="text-2xl font-bold text-white">Join the team</h2>
+            <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
+                Developers and contributors looking for Odoo, Node.js or integration work can apply on the <a href="#careers" class="text-cyan-400 underline font-medium">Careers</a> page.
+            </p>
+        </section>
+
+        <!-- Contact Section Modal/Anchor -->
+        <section id="contact" class="bg-brandSurface/90 border border-slate-800 rounded-2xl p-8 sm:p-10 space-y-6">
+            <div class="text-center space-y-2 max-w-xl mx-auto">
+                <h2 class="text-3xl font-bold text-white">Let's Discuss Your Project</h2>
+                <p class="text-sm text-slate-400">Ready to optimize your Odoo architecture or integrate custom business systems? Get in touch with us.</p>
+            </div>
+
+            <form onsubmit="event.preventDefault(); showSuccessMessage();" class="max-w-xl mx-auto space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Your Name</label>
+                    <input type="text" required placeholder="John Doe" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+                    <input type="email" required placeholder="john@company.com" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Project Details</label>
+                    <textarea rows="4" required placeholder="Describe your Odoo customization, integration, or security requirements..." class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors"></textarea>
+                </div>
+                <button type="submit" class="btn-glow w-full py-3 rounded-xl font-bold text-white text-sm">
+                    Send Message
+                </button>
+            </form>
+
+            <div id="msg-box" class="hidden max-w-xl mx-auto p-4 bg-emerald-950/80 border border-emerald-500/50 rounded-xl text-emerald-300 text-sm text-center">
+                Thank you! Your message has been sent successfully. We will contact you shortly.
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-brandBg py-8 mt-16 text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 Muhammad Mughal — Odoo Developer & Security Advisor. All rights reserved.</p>
+            <div class="flex items-center gap-6">
+                <a href="https://github.com" target="_blank" class="hover:text-slate-300 transition-colors">GitHub</a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-slate-300 transition-colors">LinkedIn</a>
+                <a href="#about" class="hover:text-slate-300 transition-colors">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Toggle Mobile Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Contact Form Submission Feedback
+        function showSuccessMessage() {
+            const msgBox = document.getElementById('msg-box');
+            msgBox.classList.remove('hidden');
+            setTimeout(() => {
+                msgBox.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
